@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: git clone https://github.com/paulwhippey/faddenrecipes
+- script: git clone https://$(PAT)@github.com/paulwhippey/faddenrecipes
   displayName: 'Git Clone'
 
 - script: ls -l faddenrecipes
