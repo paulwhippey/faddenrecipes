@@ -15,3 +15,6 @@ steps:
 
 - script: ls -l faddenrecipes
   displayName: 'List files'
+
+- script: azcopy sync "faddenrecipes/" "https://faddenrecipes.blob.core.windows.net/$web/" --include-pattern="*.html"
+  displayName: 'Sync files to Azure storage'
