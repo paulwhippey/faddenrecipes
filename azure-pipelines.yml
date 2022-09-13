@@ -16,5 +16,5 @@ steps:
 - script: ls -l faddenrecipes
   displayName: 'List files'
 
-- script: az storage blob upload-batch --account-name faddenrecipes --auth-mode key --account-key $(KEY) -s "faddenrecipes/" --pattern '[!azure-pipelines.yml]*' -d "\$web/"
+- script: az storage blob upload-batch --account-name faddenrecipes --auth-mode key --account-key $(KEY) -s "faddenrecipes" --pattern '[!azure-pipelines.yml]*' -d "\$web" --overwrite
   displayName: 'Copy files to Azure storage'
