@@ -13,8 +13,11 @@ steps:
 - script: git clone https://$(PAT)@github.com/paulwhippey/faddenrecipes
   displayName: 'Git Clone'
 
-- script: ls -l faddenrecipes
-  displayName: 'List files'
+- script: az storage blob upload-batch --account-name faddenrecipes --auth-mode key --account-key $(KEY) -s "faddenrecipes" --pattern '*.html' -d "\$web" --overwrite
+  displayName: 'Copy HTML files to Azure storage'
 
-- script: az storage blob upload-batch --account-name faddenrecipes --auth-mode key --account-key $(KEY) -s "faddenrecipes" --pattern '[!azure-pipelines.yml]*' -d "\$web" --overwrite
-  displayName: 'Copy files to Azure storage'
+- script: az storage blob upload-batch --account-name faddenrecipes --auth-mode key --account-key $(KEY) -s "faddenrecipes" --pattern '*.css' -d "\$web" --overwrite
+  displayName: 'Copy CSS files to Azure storage'
+
+- script: az storage blob upload-batch --account-name faddenrecipes --auth-mode key --account-key $(KEY) -s "faddenrecipes" --pattern '*.png' -d "\$web" --overwrite
+  displayName: 'Copy PNG files to Azure storage'
